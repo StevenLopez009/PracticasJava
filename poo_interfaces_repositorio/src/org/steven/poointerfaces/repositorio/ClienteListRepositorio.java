@@ -3,9 +3,10 @@ package org.steven.poointerfaces.repositorio;
 import org.steven.poointerfaces.modelo.Cliente;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class ClienteListRepositorio implements CrudRepositorio, OrdenableRepositorio, PaginableRepositorio  {
+public class ClienteListRepositorio implements OrdenablePaginableRepositorio  {
 
     private List<Cliente> dataSource;
 
@@ -51,11 +52,22 @@ public class ClienteListRepositorio implements CrudRepositorio, OrdenableReposit
 
     @Override
     public List<Cliente> listarClientes(String campo, Direccion dir) {
-        return List.of();
+        List<Cliente> listaOrdenada = new ArrayList<>(this.dataSource);
+        listaOrdenada.sort((a, b) -> {
+            int resultado = switch (campo) {
+                case "id" -> a.getId().compareTo(b.getId());
+                case "nombre" -> a.getNombre().compareTo(b.getNombre());
+                case "apellido" -> a.getApellido().compareTo(b.getApellido());
+                default -> 0;
+            };
+            return dir == Direccion.DESC ? -resultado : resultado;
+        });
+        return listaOrdenada;
     }
+
 
     @Override
     public List<Cliente> listar(int desde, int hasta) {
-        return List.of();
+        return dataSource.subList(desde, hasta);
     }
 }
