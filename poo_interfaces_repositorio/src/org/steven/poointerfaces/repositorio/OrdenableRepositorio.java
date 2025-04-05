@@ -3,6 +3,6 @@ import org.steven.poointerfaces.modelo.Cliente;
 
 import java.util.List;
 
-public interface OrdenableRepositorio {
-    List<Cliente> listarClientes(String campo, Direccion dir);
+public interface OrdenableRepositorio <T> {
+    List<T> listarClientes(String campo, Direccion dir);
 }

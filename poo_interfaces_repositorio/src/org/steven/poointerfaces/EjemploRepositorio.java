@@ -1,12 +1,13 @@
 package org.steven.poointerfaces;
 import org.steven.poointerfaces.modelo.Cliente;
 import org.steven.poointerfaces.repositorio.*;
+import org.steven.poointerfaces.repositorio.lista.ClienteListRepositorio;
 
 import java.util.List;
 
 public class EjemploRepositorio {
     public static void main(String[] args) {
-        OrdenablePaginableRepositorio repo = new ClienteListRepositorio();
+        OrdenablePaginableRepositorio <Cliente> repo = new ClienteListRepositorio();
         repo.agregarCliente(new Cliente("Bea", "Gonzales"));
         repo.agregarCliente(new Cliente("Bob", "Gonzales"));
         repo.agregarCliente(new Cliente("Alice", "Gonzales"));

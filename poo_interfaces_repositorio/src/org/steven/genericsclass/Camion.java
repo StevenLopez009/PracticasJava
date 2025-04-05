@@ -18,6 +18,7 @@ public class Camion <T> implements Iterable<T>{
             this.objetos.add(obj);
         }else{
             throw new RuntimeException("No hay mas espacio");
+
         }
     }
 
