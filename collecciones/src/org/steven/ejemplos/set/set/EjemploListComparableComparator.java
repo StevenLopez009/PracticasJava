@@ -2,20 +2,23 @@ package org.steven.ejemplos.set.set;
 
 import org.steven.ejemplos.set.modelo.Alumno;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
-public class EjemploTreesetComparable {
+public class EjemploListComparableComparator {
     public static void main(String[] args) {
-        Set<Alumno> sa= new TreeSet<Alumno>();
+        List<Alumno> sa= new ArrayList<>();
         sa.add(new Alumno("Atenea", 10));
         sa.add(new Alumno("Era", 25));
         sa.add(new Alumno("Zeus", 40));
         sa.add(new Alumno("Hades", 50));
         sa.add(new Alumno("Afrodita", 15));
-        sa.add(new Alumno("pedro", 15));
-        sa.add(new Alumno("pedro", 10));
+        sa.add(new Alumno("Pedro", 15));
+        sa.add(new Alumno("Pedro", 10));
+
+        System.out.println("Utilizando la clase Collections");
+        //Collections.sort(sa, (a,b)->a.getNombre().compareTo(b.getNombre()));
+        sa.sort(Comparator.comparing(Alumno::getNombre));
+        System.out.println(sa);
 
         System.out.println("Iterando usando foreach");
         for (Alumno a : sa) {
