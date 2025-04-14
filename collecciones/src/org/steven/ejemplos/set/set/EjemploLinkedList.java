@@ -5,6 +5,7 @@ import org.steven.ejemplos.set.modelo.Alumno;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class EjemploLinkedList {
     public static void main(String[] args) {
@@ -21,6 +22,14 @@ public class EjemploLinkedList {
         System.out.println(al.size());
 
         al.addFirst(new Alumno("Juan", 15));
+
+        System.out.println("Iterator");
+        ListIterator<Alumno> li = al.listIterator();
+        while (li.hasNext()) {
+            System.out.println(li.next());
+        }
+
+        
 
 
     }
