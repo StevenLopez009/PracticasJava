@@ -60,6 +60,30 @@ public class Main {
                 System.out.println("Operación no válida.");
         }
 
+        // Calcular el factorial
+        System.out.println("Ingresa un número para calcular su factorial: ");
+        int numero = scanner.nextInt();
+        System.out.println("El factorial de " + numero + " es: " + factorial(numero));
+
+        //Fibonacci
+        int numFibonacci= 23;
+        for (int i = 0; i < numFibonacci; i++) {
+            System.out.println( fibonacci(i));
+        }
+
+        // palindromo
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Ingresa una palabra: ");
+        String palabra = scan.nextLine();
+
+        String invertida = new StringBuilder(palabra).reverse().toString();
+        if (palabra.equalsIgnoreCase(invertida)) {
+            System.out.println(palabra + " es un palíndromo.");
+        } else {
+            System.out.println(palabra + " no es un palíndromo.");
+        }
+
+        scan.close();
 
     }
     public static boolean esPrimo(int n){
@@ -74,5 +98,15 @@ public class Main {
         return true;
 
     }
+
+    public static int factorial(int n) {
+        if(n<=1) return 1;
+        return n*factorial(n-1);
+    }
+
+   public static int fibonacci(int n){
+        if(n<=1) return n;
+        return fibonacci(n-1)+fibonacci(n-2);
+   }
 
 }
